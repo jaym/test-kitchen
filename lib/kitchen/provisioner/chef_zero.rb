@@ -62,7 +62,7 @@ module Kitchen
           fi
         PREPARE
 
-        Util.wrap_command(cmd)
+        Util.wrap_command(cmd, shell)
       end
 
       # (see Base#run_command)
@@ -87,9 +87,8 @@ module Kitchen
           args << "--logfile #{config[:log_file]}"
         end
 
-        # TODO: We definitely need to put more logic on this.
-        # Util.wrap_command([cmd, *args].join(" "))
-        [cmd, *args].join(" ")
+        # TODO: We definitely need to put more logic on this.
+        Util.wrap_command([cmd, *args].join(" "), shell)
       end
 
       private
