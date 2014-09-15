@@ -29,7 +29,7 @@ function download_chef($chef_url, $chef_msi) {
 
 # function to install chef with sort of a nice progress bar
 function install_chef {
-  $proc_msi = Start-Process -FilePath 'msiexec.exe' -ArgumentList "/qn /i $chef_msi" -Passthru
+  $proc_msi = Start-Process -FilePath 'msiexec.exe' -ArgumentList "/qn /i $chef_msi /L*V C:\msi.log DISABLEROLLBACK=1 FASTOEM=1" -Passthru
   $bar = ""
   while (-Not $proc_msi.HasExited ) {
     Write-Host -NoNewline "`r`t[MSI] [$bar"
