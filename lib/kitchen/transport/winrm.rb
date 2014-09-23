@@ -245,7 +245,7 @@ module Kitchen
 
       # (see Base#env_command)
       def env_command(command)
-        env = ""
+        env = " $ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"
         env << " $env:http_proxy=\"#{config[:http_proxy]}\";"   if config[:http_proxy]
         env << " $env:https_proxy=\"#{config[:https_proxy]}\";" if config[:https_proxy]
 
