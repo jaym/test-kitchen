@@ -37,7 +37,7 @@ module Kitchen
     class ChefBase < Base
 
       default_config :require_chef_omnibus, true
-      default_config :chef_omnibus_url, "https://www.chef.io/chef/install.sh"
+      default_config :chef_omnibus_url, "https://omnitruck.chef.io/install.sh"
       default_config :chef_omnibus_install_options, nil
       default_config :run_list, []
       default_config :attributes, {}
@@ -132,6 +132,7 @@ module Kitchen
           opts[:root] = config[:chef_omnibus_root] if config.key? :chef_omnibus_root
           opts[:http_proxy] = config[:http_proxy] if config.key? :http_proxy
           opts[:https_proxy] = config[:https_proxy] if config.key? :https_proxy
+          opts[:prerelease] = true
         end
       end
 
